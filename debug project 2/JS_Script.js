@@ -28,36 +28,30 @@ const STATUS_MAP = {
 }
 
 // Edit below line 
+function doTheThing(id){
+    const book = document.querySelector(id);
+    const status = book.querySelector(".status")
+    status.style.color = STATUS_MAP[status.textContent].color;
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkin = selector(checkin)
+    if (!STATUS_MAP[status.textContent].canReserve) {
+        const reserveBtn = book.querySelector(".reserve");
+        reserveBtn.setAttribute("disabled", "disabled");
+    }
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkin = selector(checkin)
+    if (!STATUS_MAP[status.textContent].canCheckout) {
+        const checkoutBtn = book.querySelector(".checkout");
+        checkoutBtn.setAttribute("disabled", "disabled");
+    }
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkin = selector(checkin)
+    if (!STATUS_MAP[status.textContent].canCheckIn) {
+        const checkInBtn = book.querySelector(".checkin");
+        checkInBtn.setAttribute("disabled", "disabled");
+    }
+    
+    console.log(status.textContent);
+    console.log(STATUS_MAP[status.textContent]);
+}
 
-checkin.0.color = none
-status.0.style.color = STATUS_MAP.status.color
-reserve.0 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.0 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkin.0 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
-
-checkin.1.color = none
-status.1.style.color = STATUS_MAP.status.color
-reserve.1 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.1 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkin.1 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
-
-checkin.2.color = none
-status.2.style.color = STATUS_MAP.status.color
-reserve.2 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.2 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkin.2 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
+doTheThing('#book1')
+doTheThing('#book2');
+doTheThing('#book3');
